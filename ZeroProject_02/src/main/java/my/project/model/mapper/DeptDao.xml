@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="my.project.model.DeptDao">
+ <!-- insertBoard(글 입력하기) -->
+ <insert id="insertDept" parameterType="my.project.model.deptDto">
+    insert into dept(deptno,dname,loc) values(#{deptno},#{dname},#{loc})
+ </insert>
+ <!-- updateBoard(글수정하기)  -->
+ <update id="update" parameterType="my.project.model.deptDto">
+  update dept set dname=#{dname}, loc=#{loc} where deptno=#{deptno}
+ </update>
+ <!-- deleteBoard(글삭제하기) -->
+ <delete id="delete" parameterType="Integer">
+  DELETE dept WHERE deptno=#{deptno}
+ </delete>
+ <!-- getBoardList(전체조회) -->
+ <select id="getDeptList" resultType="my.project.model.deptDto">
+       select deptno,dname,loc from dept             
+   
+ </select>
+ <select id="check" resultType="my.project.model.deptDto">
+       select deptno from dept where deptno=#{deptno}  
+ </select>
+	
+</mapper>
